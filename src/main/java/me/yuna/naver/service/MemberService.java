@@ -11,7 +11,6 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-
     public Long join(Member member) {
         if (member == null) {
             throw new NullMemberException();

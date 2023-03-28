@@ -1,9 +1,9 @@
 package me.yuna.naver.unit;
 
 import me.yuna.naver.domain.Member;
-import me.yuna.naver.exception.EmailCanNotBeNullOrEmptyException;
-import me.yuna.naver.exception.PasswordCanNotBeNullOrEmptyException;
-import me.yuna.naver.exception.WrongEmailFormatException;
+import me.yuna.naver.exception.EmailNullOrEmptyException;
+import me.yuna.naver.exception.PasswordNullOrEmptyException;
+import me.yuna.naver.exception.EmailFormatException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -23,7 +23,7 @@ public class MemberTest {
         Throwable throwable = catchThrowable(() -> Member.create(email, "password"));
 
         // then
-        assertThat(throwable).isInstanceOf(EmailCanNotBeNullOrEmptyException.class);
+        assertThat(throwable).isInstanceOf(EmailNullOrEmptyException.class);
     }
 
     @ParameterizedTest(name = "password=[{0}]")
@@ -35,7 +35,7 @@ public class MemberTest {
         Throwable throwable = catchThrowable(() -> Member.create("test@email.com", password));
 
         // then
-        assertThat(throwable).isInstanceOf(PasswordCanNotBeNullOrEmptyException.class);
+        assertThat(throwable).isInstanceOf(PasswordNullOrEmptyException.class);
     }
 
     @ParameterizedTest
@@ -46,6 +46,6 @@ public class MemberTest {
         Throwable throwable = catchThrowable(() -> Member.create(email, "password"));
 
         // then
-        assertThat(throwable).isInstanceOf(WrongEmailFormatException.class);
+        assertThat(throwable).isInstanceOf(EmailFormatException.class);
     }
 }

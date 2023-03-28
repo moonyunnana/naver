@@ -35,7 +35,7 @@ public class MemberServiceTest {
     @DisplayName("[가입 - 성공]")
     void givenMember_whenJoin_thenReturnMemberId() {
         // given
-        Member member = Member.create("test@email.com", "123456");
+        Member member = Member.create("test@email.com", "Password123!@#");
 
         // when
         Long memberId = memberService.join(member);
@@ -43,5 +43,4 @@ public class MemberServiceTest {
         // then
         assertThat(memberId).isNotNull();
     }
-
 }
